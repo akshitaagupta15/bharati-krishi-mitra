@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KisanAI - Smart Agriculture Assistant</title>
+    <link rel="stylesheet" href="prototype.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <div>
+                    <h1>KisanAI</h1>
+                    <p>Smart Agriculture</p>
+                </div>
+            </div>
+            <div class="language-selector">
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="te">Telugu</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="crop-health">Crop Health</button>
+                <button class="tab-btn" data-tab="market-prices">Market Prices</button>
+                <button class="tab-btn" data-tab="equipment">Equipment Sharing</button>
+            </div>
+
+            <!-- Crop Health Section -->
+            <div id="crop-health" class="tab-content active">
+                <div class="section-card">
+                    <h2>Crop Health Analysis</h2>
+                    <p>Upload an image of your crop to detect diseases and pests</p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <span class="upload-icon">📸</span>
+                            <p>Click or drag to upload crop image</p>
+                            <input type="file" id="cropImage" accept="image/*" hidden>
+                        </div>
+                    </div>
+
+                    <div id="analysisResult" class="analysis-result hidden">
+                        <h3>Analysis Result</h3>
+                        <div class="result-card">
+                            <div class="status healthy">
+                                <span class="status-icon">✅</span>
+                                <span>Crop appears healthy</span>
+                            </div>
+                            <div class="recommendations">
+                                <h4>Recommendations:</h4>
+                                <ul>
+                                    <li>Continue current watering schedule</li>
+                                    <li>Apply organic fertilizer in 2 weeks</li>
+                                    <li>Monitor for pest activity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Prices Section -->
+            <div id="market-prices" class="tab-content">
+                <div class="section-card">
+                    <h2>Market Prices</h2>
+                    <p>Current market rates for agricultural products</p>
+                    
+                    <div class="price-grid">
+                        <div class="price-card">
+                            <h3>Rice</h3>
+                            <div class="price">₹2,850/quintal</div>
+                            <div class="change positive">+₹150</div>
+                            <p>Visakhapatnam Mandi</p>
+                        </div>
+                        
+                        <div class="price-card">
+                            <h3>Wheat</h3>
+                            <div class="price">₹2,200/quintal</div>
+                            <div class="change negative">-₹50</div>
+                            <p>Visakhapatnam Mandi</p>
+                        </div>
+                        
+                        <div class="price-card">
+                            <h3>Cotton</h3>
+                            <div class="price">₹6,800/quintal</div>
+                            <div class="change positive">+₹200</div>
+                            <p>Visakhapatnam Mandi</p>
+                        </div>
+                        
+                        <div class="price-card">
+                            <h3>Groundnut</h3>
+                            <div class="price">₹5,500/quintal</div>
+                            <div class="change positive">+₹100</div>
+                            <p>Visakhapatnam Mandi</p>
+                        </div>
+                    </div>
+
+                    <div class="price-alerts">
+                        <h3>Price Alerts</h3>
+                        <div class="alert">
+                            <span class="alert-icon">🔔</span>
+                            <div>
+                                <strong>Cotton prices rising!</strong>
+                                <p>Good time to sell your cotton harvest</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equipment Sharing Section -->
+            <div id="equipment" class="tab-content">
+                <div class="section-card">
+                    <h2>Equipment Sharing</h2>
+                    <p>Find and share agricultural equipment with nearby farmers</p>
+                    
+                    <div class="equipment-filters">
+                        <select id="equipmentType">
+                            <option value="">All Equipment</option>
+                            <option value="tractor">Tractor</option>
+                            <option value="harvester">Harvester</option>
+                            <option value="plough">Plough</option>
+                            <option value="sprayer">Sprayer</option>
+                        </select>
+                        <button class="btn-primary" onclick="addEquipment()">Add Equipment</button>
+                    </div>
+
+                    <div class="equipment-grid">
+                        <div class="equipment-card">
+                            <div class="equipment-image">🚜</div>
+                            <div class="equipment-info">
+                                <h3>Mahindra Tractor</h3>
+                                <p><strong>Owner:</strong> Ravi Kumar</p>
+                                <p><strong>Location:</strong> Visakhapatnam</p>
+                                <p><strong>Rate:</strong> ₹800/day</p>
+                                <p><strong>Available:</strong> Mon-Fri</p>
+                                <button class="btn-secondary">Contact Owner</button>
+                            </div>
+                        </div>
+
+                        <div class="equipment-card">
+                            <div class="equipment-image">🌾</div>
+                            <div class="equipment-info">
+                                <h3>Combine Harvester</h3>
+                                <p><strong>Owner:</strong> Suresh Reddy</p>
+                                <p><strong>Location:</strong> Visakhapatnam</p>
+                                <p><strong>Rate:</strong> ₹1,200/day</p>
+                                <p><strong>Available:</strong> Weekends</p>
+                                <button class="btn-secondary">Contact Owner</button>
+                            </div>
+                        </div>
+
+                        <div class="equipment-card">
+                            <div class="equipment-image">💧</div>
+                            <div class="equipment-info">
+                                <h3>Water Sprayer</h3>
+                                <p><strong>Owner:</strong> Lakshmi Devi</p>
+                                <p><strong>Location:</strong> Visakhapatnam</p>
+                                <p><strong>Rate:</strong> ₹300/day</p>
+                                <p><strong>Available:</strong> Daily</p>
+                                <button class="btn-secondary">Contact Owner</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Equipment Form Modal -->
+    <div id="equipmentModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add Your Equipment</h2>
+            <form id="equipmentForm">
+                <input type="text" placeholder="Equipment Name" required>
+                <select required>
+                    <option value="">Equipment Type</option>
+                    <option value="tractor">Tractor</option>
+                    <option value="harvester">Harvester</option>
+                    <option value="plough">Plough</option>
+                    <option value="sprayer">Sprayer</option>
+                </select>
+                <input type="text" placeholder="Your Name" required>
+                <input type="text" placeholder="Location" required>
+                <input type="number" placeholder="Rate per day (₹)" required>
+                <input type="text" placeholder="Availability" required>
+                <button type="submit" class="btn-primary">Add Equipment</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="prototype.js"></script>
+</body>
+</html>
